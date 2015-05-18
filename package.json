@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "mkdir -p public/js && browserify -t reactify src/app/index.js > public/js/index.js"
+    "build": "mkdir -p public/js && browserify -t reactify src/app/index.js > public/js/index.js",
+    "postinstall": "npm run build"
   },
   "author": "Ken Grønnbeck",
   "license": "ISC",
@@ -17,9 +18,7 @@
     "mongoose": "^4.0.3",
     "react": "^0.13.3",
     "react-router": "^0.13.3",
-    "superagent": "^1.2.0"
-  },
-  "devDependencies": {
+    "superagent": "^1.2.0",
     "browserify": "^10.2.0",
     "gulp": "^3.8.11",
     "reactify": "^1.1.1"

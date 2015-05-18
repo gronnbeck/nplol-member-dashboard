@@ -23,16 +23,8 @@ var Event = mongoose.model('Event', {
 var app = express();
 app.use(bodyParser.json());
 
-var parseDays = function(days) {
-  var today = moment();
-  // Note: today has also mutated;
-  var past = today.add(-1 * days, 'day');
-  return past;
-}
-
 app.get('/missing', function(req, res) {
-  var sinceOfDays = parseInt(req.query.since || 7);
-  var sinceOf = parseDays(sinceOfDays);
+  var since = parseInt(req.query.since || 7);
 
   request
   .get(NPLOL_ATTENDANCE_URL)
@@ -51,7 +43,8 @@ app.get('/missing', function(req, res) {
             return _.contains(usernames, activity.username);
           }).filter(function(activity) {
             var lastSeen = moment(activity.lastSeen);
-            return lastSeen > sinceOf;
+            var today = moment();
+            return today.diff(lastSeen, 'days') >= since;
           }).value();
 
           return res.send(inactives);

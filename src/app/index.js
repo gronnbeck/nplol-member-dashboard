@@ -81,7 +81,7 @@ var Missing = React.createClass({
     var users = this.state.missing.map(function(missing) {
       var date = moment(missing.lastSeen);
       var today = moment();
-      var daysAgo = date.diff(today, 'days');
+      var daysAgo = Math.abs(date.diff(today, 'days'));
       return <div>
         <div>{missing.username}</div>
         <div>Has been missing for {daysAgo} days</div>

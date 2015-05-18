@@ -4,7 +4,8 @@
   "description": "nplol activity dashboard",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "mkdir -p public/js && browserify -t reactify src/app/index.js > public/js/index.js"
   },
   "author": "Ken Grønnbeck",
   "license": "ISC",
@@ -14,6 +15,13 @@
     "lodash": "^3.8.0",
     "moment": "^2.10.3",
     "mongoose": "^4.0.3",
+    "react": "^0.13.3",
+    "react-router": "^0.13.3",
     "superagent": "^1.2.0"
+  },
+  "devDependencies": {
+    "browserify": "^10.2.0",
+    "gulp": "^3.8.11",
+    "reactify": "^1.1.1"
   }
 }

@@ -11,6 +11,7 @@ var MONGO_URI = process.env.MONGOLAB_URI || 'mongodb://localhost/nplol-members';
 mongoose.connect(MONGO_URI);
 
 app.use('/api', api);
+app.use('/', express.static('public'));
 
 
 app.listen(PORT, function() {

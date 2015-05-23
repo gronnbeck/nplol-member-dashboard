@@ -8,6 +8,7 @@ var RouteHandler = Router.RouteHandler;
 
 var AddUser = require('./components/add-member');
 var Missing = require('./components/missing');
+var Members = require('./components/members');
 
 var App = React.createClass({
   render () {
@@ -22,6 +23,7 @@ var App = React.createClass({
 var routes = (
   <Route handler={App}>
     <Route path="/add" handler={AddUser}/>
+    <Route path="/members" handler={Members}/>
     <DefaultRoute handler={Missing}/>
   </Route>
 );
